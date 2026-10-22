@@ -1,0 +1,10 @@
+import assert from 'node:assert/strict';
+import {rouletteIntent} from '../src/utils/rouletteGesture.ts';
+assert.equal(rouletteIntent(2,-80,true),'page','A vertical swipe on a sheet must scroll the page');
+assert.equal(rouletteIntent(12,-35,true),'page','A mostly vertical diagonal must scroll');
+assert.equal(rouletteIntent(20,-20,true),'page','An ambiguous diagonal must not trap the user');
+assert.equal(rouletteIntent(80,5,true),'rotate','A horizontal swipe rotates');
+assert.equal(rouletteIntent(-80,-5,true),'rotate','Reverse horizontal swipe rotates');
+assert.equal(rouletteIntent(2,3,true),'pending','A tap must still open its sheet');
+assert.equal(rouletteIntent(0,80,false),'rotate','Mouse circular dragging still works');
+console.log('Verified vertical escape, diagonal escape, horizontal swipes, taps and mouse dragging.');
