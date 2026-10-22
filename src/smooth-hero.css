@@ -1,0 +1,18 @@
+/* Continuous traversal, blended gait and a separate photographic finale. */
+.smooth-walk-hero{height:320svh}
+.smooth-walk-hero .walking-main{overflow:clip}
+.smooth-walk-hero .walking-positioner{transform-origin:center bottom;perspective:1100px}
+.walk-blended-body{position:absolute;inset:0;isolation:isolate}
+.walk-blended-body .blended-frame{position:absolute;inset:0;filter:none;will-change:opacity;background-repeat:no-repeat}
+.hero-final-portrait{position:absolute;inset:-10px 0 28px;display:flex;align-items:flex-end;justify-content:center;z-index:4;pointer-events:none;transform-origin:center bottom;will-change:opacity,transform}
+.hero-final-portrait>img{height:112%;width:auto;max-width:76%;object-fit:contain;object-position:center bottom;filter:grayscale(1);mask-image:linear-gradient(to bottom,#000 0%,#000 96%,transparent 100%)}
+.hero-final-labels{position:absolute;inset:0;z-index:5;pointer-events:none}
+.hero-final-labels>span{position:absolute;background:#111;color:#f4f1ea;padding:8px 11px;font:6px 'JetBrains Mono',monospace;letter-spacing:.1em;white-space:nowrap}
+.hero-final-labels>span:nth-child(1){left:11%;top:20%}.hero-final-labels>span:nth-child(2){right:12%;top:28%}.hero-final-labels>span:nth-child(3){right:4%;bottom:25%}
+.hero-final-labels i{position:absolute;top:50%;width:65px;height:1px;background:#2869c8;transform-origin:left}
+.hero-final-labels>span:nth-child(1) i{left:100%;transform:rotate(25deg)}.hero-final-labels>span:nth-child(2) i,.hero-final-labels>span:nth-child(3) i{right:100%;transform-origin:right;transform:rotate(-25deg)}
+.smooth-walk-hero .walk-reconstruction{z-index:6;font-size:4px}
+@media(max-width:760px){.smooth-walk-hero{height:280svh}.hero-final-portrait{inset:0 -9% 28px}.hero-final-portrait>img{height:108%;max-width:95%}.hero-final-labels>span{font-size:4px;padding:6px}.hero-final-labels>span:nth-child(1){left:0;top:12%}.hero-final-labels>span:nth-child(2){right:0;top:24%}.hero-final-labels>span:nth-child(3){right:0;bottom:22%}.hero-final-labels i{width:25px}.smooth-walk-hero .walk-reconstruction{font-size:3px;max-width:90%;line-height:1.7;bottom:7px}}
+@media(prefers-reduced-motion:reduce){.smooth-walk-hero{height:auto}.smooth-walk-hero .walking-main{height:480px}.smooth-walk-hero .walk-intro{opacity:0!important}.hero-final-portrait{will-change:auto}.walk-blended-body .blended-frame{will-change:auto}}
+.walk-blended-body .blended-frame{mix-blend-mode:plus-lighter}
+.hero-final-portrait>img{height:100%}@media(max-width:760px){.hero-final-portrait>img{height:100%}}

@@ -1,0 +1,14 @@
+node_modules/
+dist/
+.ssr-build/
+design-backup/
+screenshots/
+.env
+.env.*
+!.env.example
+*.log
+*.tsbuildinfo
+.DS_Store
+Thumbs.db
+.codex/
+.agents/

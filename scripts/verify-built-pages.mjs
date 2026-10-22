@@ -1,0 +1,7 @@
+import {readFile,access} from 'node:fs/promises';
+import assert from 'node:assert/strict';
+import path from 'node:path';
+import {paths,render} from '../.ssr-build/prerender.js';
+let articleCount=0;
+for(const url of paths){const page=render(url),file=url==='/'?'dist/index.html':path.join('dist',url,'index.html');const html=await readFile(file,'utf8');assert(html.includes(`<html lang="${page.lang}"`),`Wrong language: ${url}`);assert(html.includes('rel="canonical"'),`Missing canonical: ${url}`);assert(html.includes('hreflang="uk"')&&html.includes('hreflang="en"'),`Missing alternates: ${url}`);assert(html.includes('application/ld+json'),`Missing schema: ${url}`);assert(html.includes('<h1'),`No prerendered heading: ${url}`);if(page.article){articleCount++;assert(html.includes(page.article.sections[0].text[page.lang]),`Article body absent: ${url}`);assert(html.includes('id="article-sources"'),`No sources: ${url}`)}for(const match of html.matchAll(/href="(\/[^"?#]*)/g)){const href=match[1];if(href.startsWith('//'))continue;const target=href.endsWith('/')?path.join('dist',href,'index.html'):path.join('dist',href);await access(target).catch(()=>{throw Error(`Broken built link ${href} in ${url}`)})}}
+assert.equal(articleCount,18);const robots=await readFile('dist/robots.txt','utf8');assert(robots.includes(process.env.SITE_URL?'Allow: /':'Disallow: /'));console.log(`Verified ${paths.length} HTML routes, ${articleCount} complete articles, local links, language metadata and robots.`);

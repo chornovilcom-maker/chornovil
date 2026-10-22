@@ -1,0 +1,3 @@
+import {NAV_ITEMS} from './HeaderHud';
+import {goToSection} from './ArchiveUI';
+export function TimelineHud({currentYear}:{currentYear:string}){const active=NAV_ITEMS.findIndex(n=>n.year===currentYear);return <nav className={'timeline-hud '+([1,5].includes(active)?'on-dark':'')} aria-label="Швидкий перехід між розділами">{NAV_ITEMS.map((n,i)=><button key={n.id} className={i===active?'is-active':''} onClick={()=>goToSection(n.id)} aria-label={`${n.year} — ${n.label}`} aria-current={i===active?'location':undefined}><span className="timeline-tooltip">{n.year} / {n.label}</span><span className="timeline-dot"/></button>)}</nav>}
