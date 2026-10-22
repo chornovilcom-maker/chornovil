@@ -1,0 +1,11 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "framework": "vite",
+  "buildCommand": "npm run build && node scripts/verify-built-pages.mjs",
+  "outputDirectory": "dist",
+  "trailingSlash": true,
+  "redirects": [
+    {"source":"/", "destination":"/uk/", "permanent":true},
+    {"source":"/:path*", "has":[{"type":"host","value":"www.chornovil.com"}], "destination":"https://chornovil.com/:path*", "permanent":true}
+  ]
+}
